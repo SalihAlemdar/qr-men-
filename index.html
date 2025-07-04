@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LİMON CAFE Menüsü</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LİMON CAFE Menü</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -20,27 +20,50 @@
       margin-bottom: 30px;
     }
 
-    .section {
-      margin-bottom: 30px;
+    .accordion {
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
     }
 
-    .section h2 {
-      font-size: 24px;
-      border-bottom: 2px solid #e2b007;
-      padding-bottom: 5px;
-      margin-bottom: 15px;
+    .accordion-header {
+      background-color: #fef4c5;
+      padding: 15px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 10px 15px;
+      background-color: #fffefa;
     }
 
     .item {
       display: flex;
+      align-items: center;
       justify-content: space-between;
       padding: 10px 0;
       border-bottom: 1px dashed #ccc;
-      font-size: 18px;
     }
 
     .item:last-child {
       border-bottom: none;
+    }
+
+    .item img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-right: 10px;
+    }
+
+    .product-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
   </style>
 </head>
@@ -48,21 +71,81 @@
 
   <h1>🍋 LİMON CAFE MENÜ</h1>
 
-  <div class="section">
-    <h2>🥤 İçecekler</h2>
-    <div class="item"><span>Limonata</span><span>80 TL</span></div>
-    <div class="item"><span>Portakal Suyu</span><span>90 TL</span></div>
-    <div class="item"><span>Vişne Suyu</span><span>50 TL</span></div>
+  <!-- İçecekler -->
+  <div class="accordion">
+    <div class="accordion-header" onclick="toggleAccordion(this)">🥤 İçecekler</div>
+    <div class="accordion-content">
+      <div class="item">
+        <div class="product-info">
+          <img src="img/limonata.jpg" alt="Limonata">
+          <span>Limonata</span>
+        </div>
+        <span>80 TL</span>
+      </div>
+      <div class="item">
+        <div class="product-info">
+          <img src="img/portakal.jpg" alt="Portakal Suyu">
+          <span>Portakal Suyu</span>
+        </div>
+        <span>90 TL</span>
+      </div>
+      <div class="item">
+        <div class="product-info">
+          <img src="img/visne.jpg" alt="Vişne Suyu">
+          <span>Vişne Suyu</span>
+        </div>
+        <span>50 TL</span>
+      </div>
+    </div>
   </div>
 
-  <div class="section">
-    <h2>🍽️ Yiyecekler</h2>
-    <div class="item"><span>Köfte</span><span>100 TL</span></div>
-    <div class="item"><span>Döner</span><span>120 TL</span></div>
-    <div class="item"><span>Kebap</span><span>140 TL</span></div>
-    <div class="item"><span>Pilav</span><span>70 TL</span></div>
-    <div class="item"><span>Çorba</span><span>50 TL</span></div>
+  <!-- Yiyecekler -->
+  <div class="accordion">
+    <div class="accordion-header" onclick="toggleAccordion(this)">🍽️ Yiyecekler</div>
+    <div class="accordion-content">
+      <div class="item">
+        <div class="product-info">
+          <img src="img/kofte.jpg" alt="Köfte">
+          <span>Köfte</span>
+        </div>
+        <span>100 TL</span>
+      </div>
+      <div class="item">
+        <div class="product-info">
+          <img src="img/doner.jpg" alt="Döner">
+          <span>Döner</span>
+        </div>
+        <span>120 TL</span>
+      </div>
+      <div class="item">
+        <div class="product-info">
+          <img src="img/kebap.jpg" alt="Kebap">
+          <span>Kebap</span>
+        </div>
+        <span>140 TL</span>
+      </div>
+      <div class="item">
+        <div class="product-info">
+          <img src="img/pilav.jpg" alt="Pilav">
+          <span>Pilav</span>
+        </div>
+        <span>70 TL</span>
+      </div>
+      <div class="item">
+        <div class="product-info">
+          <img src="img/corba.jpg" alt="Çorba">
+          <span>Çorba</span>
+        </div>
+        <span>50 TL</span>
+      </div>
+    </div>
   </div>
 
+  <script>
+    function toggleAccordion(header) {
+      const content = header.nextElementSibling;
+      content.style.display = content.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
 </body>
 </html>
