@@ -184,108 +184,99 @@
   </div>
 </header>
 
-<script>
-  setTimeout(() => {
-    const welcome = document.getElementById('welcome');
-    if (welcome) welcome.style.display = 'none';
-  }, 2500);
-</script>
-
-<!-- Menü içerikleri burada devam eder -->
-
- <div class="accordion">
-    <div class="accordion-header" onclick="toggleAccordion(this)" id="drinksTitle">🥤 İçecekler</div>
-    <div class="accordion-content">
-      <div class="item">
-        <div class="left"><img src="img/limonata.jpg"><span id="item1">Limonata</span></div>
-        <div class="price">80 TL</div>
-      </div>
-      <div class="item">
-        <div class="left"><img src="img/portakal.jpg"><span id="item2">Portakal Suyu</span></div>
-        <div class="price">90 TL</div>
-      </div>
-      <div class="item">
-        <div class="left"><img src="img/visne.jpg"><span id="item3">Vişne Suyu</span></div>
-        <div class="price">50 TL</div>
-      </div>
+<div class="accordion">
+  <div class="accordion-header" onclick="toggleAccordion(this)" id="drinksTitle">🥤 İçecekler</div>
+  <div class="accordion-content">
+    <div class="item">
+      <div class="left"><img src="img/limonata.jpg"><span id="item1">Limonata</span></div>
+      <div class="price">80 TL</div>
+    </div>
+    <div class="item">
+      <div class="left"><img src="img/portakal.jpg"><span id="item2">Portakal Suyu</span></div>
+      <div class="price">90 TL</div>
+    </div>
+    <div class="item">
+      <div class="left"><img src="img/visne.jpg"><span id="item3">Vişne Suyu</span></div>
+      <div class="price">50 TL</div>
     </div>
   </div>
+</div>
 
-  <div class="accordion">
-    <div class="accordion-header" onclick="toggleAccordion(this)" id="foodsTitle">🍽️ Yiyecekler</div>
-    <div class="accordion-content">
-      <div class="item">
-        <div class="left"><img src="img/kofte.jpg"><span id="item4">Köfte</span></div>
-        <div class="price">100 TL</div>
-      </div>
-      <div class="item">
-        <div class="left"><img src="img/doner.jpg"><span id="item5">Döner</span></div>
-        <div class="price">120 TL</div>
-      </div>
-      <div class="item">
-        <div class="left"><img src="img/kebap.jpg"><span id="item6">Kebap</span></div>
-        <div class="price">140 TL</div>
-      </div>
-      <div class="item">
-        <div class="left"><img src="img/pilav.jpg"><span id="item7">Pilav</span></div>
-        <div class="price">70 TL</div>
-      </div>
-      <div class="item">
-        <div class="left"><img src="img/corba.jpg"><span id="item8">Çorba</span></div>
-        <div class="price">50 TL</div>
-      </div>
+<div class="accordion">
+  <div class="accordion-header" onclick="toggleAccordion(this)" id="foodsTitle">🍽️ Yiyecekler</div>
+  <div class="accordion-content">
+    <div class="item">
+      <div class="left"><img src="img/kofte.jpg"><span id="item4">Köfte</span></div>
+      <div class="price">100 TL</div>
+    </div>
+    <div class="item">
+      <div class="left"><img src="img/doner.jpg"><span id="item5">Döner</span></div>
+      <div class="price">120 TL</div>
+    </div>
+    <div class="item">
+      <div class="left"><img src="img/kebap.jpg"><span id="item6">Kebap</span></div>
+      <div class="price">140 TL</div>
+    </div>
+    <div class="item">
+      <div class="left"><img src="img/pilav.jpg"><span id="item7">Pilav</span></div>
+      <div class="price">70 TL</div>
+    </div>
+    <div class="item">
+      <div class="left"><img src="img/corba.jpg"><span id="item8">Çorba</span></div>
+      <div class="price">50 TL</div>
     </div>
   </div>
+</div>
 <script>
   const translations = {
-      tr: {
-        title: "🍋 LİMON CAFE MENÜ",
-        drinksTitle: "🥤 İçecekler",
-        foodsTitle: "🍽️ Yiyecekler",
-        item1: "Limonata",
-        item2: "Portakal Suyu",
-        item3: "Vişne Suyu",
-        item4: "Köfte",
-        item5: "Döner",
-        item6: "Kebap",
-        item7: "Pilav",
-        item8: "Çorba"
-      },
-      en: {
-        title: "🍋 LEMON CAFE MENU",
-        drinksTitle: "🥤 Beverages",
-        foodsTitle: "🍽️ Foods",
-        item1: "Lemonade",
-        item2: "Orange Juice",
-        item3: "Sour Cherry Juice",
-        item4: "Meatballs",
-        item5: "Doner Kebab",
-        item6: "Kebab",
-        item7: "Rice",
-        item8: "Soup"
-      },
-      ar: {
-        title: "🍋 قائمة ليمون كافيه",
-        drinksTitle: "🥤 المشروبات",
-        foodsTitle: "🍽️ الأطعمة",
-        item1: "ليموناضة",
-        item2: "عصير برتقال",
-        item3: "عصير الكرز",
-        item4: "كفتة",
-        item5: "شاورما",
-        item6: "كباب",
-        item7: "أرز",
-        item8: "شوربة"
-      }
-    };
-  function setLanguage(lang) {
-      const t = translations[lang];
-      for (const key in t) {
-        document.getElementById(key).textContent = t[key];
-      }
-      document.documentElement.lang = lang;
-      document.body.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
+    tr: {
+      title: "🍋 LİMON CAFE MENÜ",
+      drinksTitle: "🥤 İçecekler",
+      foodsTitle: "🍽️ Yiyecekler",
+      item1: "Limonata",
+      item2: "Portakal Suyu",
+      item3: "Vişne Suyu",
+      item4: "Köfte",
+      item5: "Döner",
+      item6: "Kebap",
+      item7: "Pilav",
+      item8: "Çorba"
+    },
+    en: {
+      title: "🍋 LEMON CAFE MENU",
+      drinksTitle: "🥤 Beverages",
+      foodsTitle: "🍽️ Foods",
+      item1: "Lemonade",
+      item2: "Orange Juice",
+      item3: "Sour Cherry Juice",
+      item4: "Meatballs",
+      item5: "Doner Kebab",
+      item6: "Kebab",
+      item7: "Rice",
+      item8: "Soup"
+    },
+    ar: {
+      title: "🍋 قائمة ليمون كافيه",
+      drinksTitle: "🥤 المشروبات",
+      foodsTitle: "🍽️ الأطعمة",
+      item1: "ليموناضة",
+      item2: "عصير برتقال",
+      item3: "عصير الكرز",
+      item4: "كفتة",
+      item5: "شاورما",
+      item6: "كباب",
+      item7: "أرز",
+      item8: "شوربة"
     }
+  };
+
+  function setLanguage(lang) {
+    const t = translations[lang];
+    for (const key in t) {
+      document.getElementById(key).textContent = t[key];
+    }
+    document.documentElement.lang = lang;
+  }
 
   function toggleAccordion(header) {
     const content = header.nextElementSibling;
