@@ -1,41 +1,87 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Limon Cafe Menü</title>
   <style>
     body {
-      font-family: -apple-system, 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       background: #fffde7;
       padding: 20px;
       margin: 0;
+      transition: direction 0.3s;
+    }
+
+    header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+      gap: 20px;
+      flex-wrap: wrap;
     }
 
     h1 {
+      font-size: 24px;
+      margin: 0;
       text-align: center;
-      font-size: 28px;
-      margin-bottom: 20px;
     }
 
-    .lang-switcher {
-      text-align: center;
-      margin-bottom: 20px;
+    .lang-dropdown {
+      position: relative;
+      display: inline-block;
     }
 
-    .lang-switcher button {
-      margin: 0 5px;
-      padding: 8px 12px;
-      border: none;
+    .lang-btn {
       background-color: #f4d03f;
-      border-radius: 6px;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
       cursor: pointer;
     }
 
-    .section-title {
-      font-size: 20px;
+    .lang-options {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: white;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+      min-width: 100px;
+    }
+
+    .lang-options button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background: none;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .lang-dropdown:hover .lang-options {
+      display: block;
+    }
+
+    .accordion {
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .accordion-header {
+      background-color: #fef4c5;
+      padding: 15px;
+      cursor: pointer;
       font-weight: bold;
-      margin-top: 20px;
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 10px 15px;
+      background-color: #fffefa;
     }
 
     .item {
@@ -43,74 +89,82 @@
       justify-content: space-between;
       align-items: center;
       margin: 10px 0;
-      padding: 10px;
-      border-bottom: 1px solid #eee;
     }
 
     .item img {
       width: 50px;
       height: 50px;
-      border-radius: 6px;
-      margin-right: 12px;
       object-fit: cover;
+      border-radius: 6px;
+      margin-right: 10px;
     }
 
     .left {
       display: flex;
       align-items: center;
+      gap: 10px;
     }
 
     .price {
       font-weight: bold;
     }
-
   </style>
 </head>
 <body>
 
-  <h1 id="title">🍋 LİMON CAFE MENÜ</h1>
+  <header>
+    <h1 id="title">🍋 LİMON CAFE MENÜ</h1>
+    <div class="lang-dropdown">
+      <button class="lang-btn">🌐 Dil</button>
+      <div class="lang-options">
+        <button onclick="setLanguage('tr')">🇹🇷 Türkçe</button>
+        <button onclick="setLanguage('en')">🇬🇧 English</button>
+        <button onclick="setLanguage('ar')">🇸🇦 العربية</button>
+      </div>
+    </div>
+  </header>
 
-  <div class="lang-switcher">
-    <button onclick="setLanguage('tr')">🇹🇷 Türkçe</button>
-    <button onclick="setLanguage('en')">🇬🇧 English</button>
-    <button onclick="setLanguage('ar')">🇸🇦 العربية</button>
+  <div class="accordion">
+    <div class="accordion-header" onclick="toggleAccordion(this)" id="drinksTitle">🥤 İçecekler</div>
+    <div class="accordion-content">
+      <div class="item">
+        <div class="left"><img src="img/limonata.jpg"><span id="item1">Limonata</span></div>
+        <div class="price">80 TL</div>
+      </div>
+      <div class="item">
+        <div class="left"><img src="img/portakal.jpg"><span id="item2">Portakal Suyu</span></div>
+        <div class="price">90 TL</div>
+      </div>
+      <div class="item">
+        <div class="left"><img src="img/visne.jpg"><span id="item3">Vişne Suyu</span></div>
+        <div class="price">50 TL</div>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <div class="section-title" id="drinksTitle">🥤 İçecekler</div>
-    <div class="item">
-      <div class="left"><img src="img/limonata.jpg"><span id="item1">Limonata</span></div>
-      <div class="price">80 TL</div>
-    </div>
-    <div class="item">
-      <div class="left"><img src="img/portakal.jpg"><span id="item2">Portakal Suyu</span></div>
-      <div class="price">90 TL</div>
-    </div>
-    <div class="item">
-      <div class="left"><img src="img/visne.jpg"><span id="item3">Vişne Suyu</span></div>
-      <div class="price">50 TL</div>
-    </div>
-
-    <div class="section-title" id="foodsTitle">🍽️ Yiyecekler</div>
-    <div class="item">
-      <div class="left"><img src="img/kofte.jpg"><span id="item4">Köfte</span></div>
-      <div class="price">100 TL</div>
-    </div>
-    <div class="item">
-      <div class="left"><img src="img/doner.jpg"><span id="item5">Döner</span></div>
-      <div class="price">120 TL</div>
-    </div>
-    <div class="item">
-      <div class="left"><img src="img/kebap.jpg"><span id="item6">Kebap</span></div>
-      <div class="price">140 TL</div>
-    </div>
-    <div class="item">
-      <div class="left"><img src="img/pilav.jpg"><span id="item7">Pilav</span></div>
-      <div class="price">70 TL</div>
-    </div>
-    <div class="item">
-      <div class="left"><img src="img/corba.jpg"><span id="item8">Çorba</span></div>
-      <div class="price">50 TL</div>
+  <div class="accordion">
+    <div class="accordion-header" onclick="toggleAccordion(this)" id="foodsTitle">🍽️ Yiyecekler</div>
+    <div class="accordion-content">
+      <div class="item">
+        <div class="left"><img src="img/kofte.jpg"><span id="item4">Köfte</span></div>
+        <div class="price">100 TL</div>
+      </div>
+      <div class="item">
+        <div class="left"><img src="img/doner.jpg"><span id="item5">Döner</span></div>
+        <div class="price">120 TL</div>
+      </div>
+      <div class="item">
+        <div class="left"><img src="img/kebap.jpg"><span id="item6">Kebap</span></div>
+        <div class="price">140 TL</div>
+      </div>
+      <div class="item">
+        <div class="left"><img src="img/pilav.jpg"><span id="item7">Pilav</span></div>
+        <div class="price">70 TL</div>
+      </div>
+      <div class="item">
+        <div class="left"><img src="img/corba.jpg"><span id="item8">Çorba</span></div>
+        <div class="price">50 TL</div>
+      </div>
     </div>
   </div>
 
@@ -163,6 +217,12 @@
         document.getElementById(key).textContent = t[key];
       }
       document.documentElement.lang = lang;
+      document.body.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
+    }
+
+    function toggleAccordion(header) {
+      const content = header.nextElementSibling;
+      content.style.display = content.style.display === 'block' ? 'none' : 'block';
     }
   </script>
 
