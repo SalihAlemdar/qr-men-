@@ -81,8 +81,8 @@
       cursor: pointer;
     }
 
-    .lang-dropdown:hover .lang-options {
-      display: block;
+    .lang-options button:hover {
+      background-color: #f4d03f;
     }
 
     .accordion {
@@ -175,7 +175,7 @@
 <header>
   <h1 id="title">🍋 LİMON CAFE MENÜ</h1>
   <div class="lang-dropdown">
-    <button class="lang-btn" id="item0" >🌐 Dil Seçimi</button>
+    <button class="lang-btn" id="item0" onclick="toggleLangOptions()">🌐 Dil Seçimi</button>
     <div class="lang-options">
       <button onclick="setLanguage('tr')">🇹🇷 Türkçe</button>
       <button onclick="setLanguage('en')">🇬🇧 English</button>
@@ -254,14 +254,13 @@
   </div>
 </div>
 
-
 <script>
   const translations = {
     tr: {
       title: "🍋 LİMON CAFE MENÜ",
       drinksTitle: "🥤 İçecekler",
       foodsTitle: "🍽️ Yiyecekler",
-      cakesTitle: "🍰 Tatlılar", 
+      cakesTitle: "🍰 Tatlılar",
       item0: "Dil Seçimi",
       item1: "Limonata",
       item2: "Portakal Suyu",
@@ -276,7 +275,7 @@
       title: "🍋 LİMON CAFE MENU",
       drinksTitle: "🥤 Beverages",
       foodsTitle: "🍽️ Foods",
-      cakesTitle:"🍰 Cakes",
+      cakesTitle: "🍰 Cakes",
       item0: "Language",
       item1: "Lemonade",
       item2: "Orange Juice",
@@ -291,8 +290,8 @@
       title: "🍋 قائمة ليمون كافيه",
       drinksTitle: "🥤 المشروبات",
       foodsTitle: "🍽️ الأطعمة",
-      cakesTitle:"🍰 كعكات",
-      item0 : "اختيار اللغة",
+      cakesTitle: "🍰 كعكات",
+      item0: "اختيار اللغة",
       item1: "ليموناضة",
       item2: "عصير برتقال",
       item3: "عصير الكرز",
@@ -310,6 +309,13 @@
       document.getElementById(key).textContent = t[key];
     }
     document.documentElement.lang = lang;
+    // Dil seçimi sonrası dropdown'ı kapat
+    document.querySelector('.lang-options').style.display = 'none';
+  }
+
+  function toggleLangOptions() {
+    const langOptions = document.querySelector('.lang-options');
+    langOptions.style.display = langOptions.style.display === 'block' ? 'none' : 'block';
   }
 
   function toggleAccordion(header) {
