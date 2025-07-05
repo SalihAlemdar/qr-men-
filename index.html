@@ -193,7 +193,7 @@
 <header>
   <h1 id="title">
     <img src="img/logo.jpg" alt="Limon Cafe Logo" class="logo-img">
-    LİMON CAFE
+    <span id="title-text">LİMON CAFE</span>
     <div class="lang-dropdown">
       <button class="lang-btn" id="item0" onclick="toggleLangOptions()">🌐 Dil Seçimi</button>
       <div class="lang-options">
@@ -327,7 +327,11 @@
   function setLanguage(lang) {
     const t = translations[lang];
     for (const key in t) {
-      document.getElementById(key).textContent = t[key];
+      if (key === 'title') {
+        document.getElementById('title-text').textContent = t[key]; // Yalnızca span içindeki metni güncelle
+      } else {
+        document.getElementById(key).textContent = t[key];
+      }
     }
     document.documentElement.lang = lang;
     // Dil seçimi sonrası dropdown'ı kapat
