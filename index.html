@@ -20,7 +20,7 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      position: relative; /* Footer için referans */
+      position: relative;
     }
 
     .welcome-message {
@@ -193,20 +193,37 @@
       padding: 10px 0;
       background-color: #fef4c5;
       width: 100%;
-      position: fixed; /* Sabit pozisyon */
-      bottom: 0; /* En alta sabitle */
+      position: fixed;
+      bottom: 0;
       left: 0;
-      z-index: 1000; /* Üstte kalmasını garantile */
+      z-index: 1000;
+    }
+
+    .footer span,
+    .footer a {
+      font-family: 'Segoe UI', sans-serif; /* Bir önceki font'a geri dön */
+      font-weight: bold; /* Yazıları kalın yap */
+      font-size: 16px;
     }
 
     .footer a {
-      margin-left: 10px;
-      color: #0066cc;
-      text-decoration: none;
-    }
+  margin-left: 10px;
+  color: #000000;
+  text-decoration: none;
+  padding: 4px 10px; /* ↓ BOYUTLARI KÜÇÜLTTÜK */
+  background-color: #f4d03f;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  font-size: 14px; /* yazı boyutu da küçüldü */
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+}
+
 
     .footer a:hover {
       text-decoration: underline;
+      background-color: #ffe066;
     }
 
     @media (max-width: 767px) {
@@ -222,13 +239,20 @@
         transform: none;
       }
       body {
-        padding-bottom: 60px; /* Footer yüksekliği için boşluk */
+        padding-bottom: 60px;
       }
       .footer {
-        position: fixed; /* Mobilde sabit tut */
+        position: fixed;
         bottom: 0;
         width: 100%;
         padding: 10px;
+      }
+      .footer span,
+      .footer a {
+        font-size: 14px;
+      }
+      .footer a {
+        padding: 6px 12px;
       }
     }
   </style>
@@ -326,62 +350,74 @@
 </div>
 
 <div class="footer">
-  <span>Telefon: +90 555 123 45 67</span>
-  <span>Adres: İstanbul, Türkiye</span>
-  <a href="https://maps.app.goo.gl/KQw3n1ojKLSa2UGo7?g_st=iw" target="_blank">Yol Tarifi</a>
+  <span dir="ltr">
+  <span id="phoneLabel" dir="ltr">Telefon</span>: +90 555 123 45 67
+</span>&nbsp;&nbsp;
+  <span id="addressLabel">Adres: Araklı, Trabzon</span>
+  <a id="mapLink" href="https://maps.app.goo.gl/KQw3n1ojKLSa2UGo7?g_st=iw" target="_blank">Yol Tarifi</a>
 </div>
 
 <script>
   const translations = {
-    tr: {
-      title: "LİMON CAFE MENÜ",
-      welcome: "Limon Cafe'ye Hoş Geldiniz!",
-      drinksTitle: "🥤 İçecekler",
-      foodsTitle: "🍽️ Yiyecekler",
-      cakesTitle: "🍰 Tatlılar",
-      item0: "Dil Seçimi",
-      item1: "Limonata",
-      item2: "Portakal Suyu",
-      item3: "Vişne Suyu",
-      item4: "Köfte",
-      item5: "Döner",
-      item6: "Kebap",
-      item7: "Pilav",
-      item8: "Çorba"
-    },
-    en: {
-      title: "LİMON CAFE MENU",
-      welcome: "Welcome to Limon Cafe!",
-      drinksTitle: "🥤 Beverages",
-      foodsTitle: "🍽️ Foods",
-      cakesTitle: "🍰 Cakes",
-      item0: "Language",
-      item1: "Lemonade",
-      item2: "Orange Juice",
-      item3: "Sour Cherry Juice",
-      item4: "Meatballs",
-      item5: "Doner Kebab",
-      item6: "Kebab",
-      item7: "Rice",
-      item8: "Soup"
-    },
-    ar: {
-      title: "ليمون كافيه",
-      welcome: "مرحبًا بكم في كافيه ليمون!",
-      drinksTitle: "🥤 المشروبات",
-      foodsTitle: "🍽️ الأطعمة",
-      cakesTitle: "🍰 كعكات",
-      item0: "اختيار اللغة",
-      item1: "ليموناضة",
-      item2: "عصير برتقال",
-      item3: "عصير الكرز",
-      item4: "كفتة",
-      item5: "شاورما",
-      item6: "كباب",
-      item7: "أرز",
-      item8: "شوربة"
-    }
-  };
+  tr: {
+    title: "LİMON CAFE MENÜ",
+    welcome: "Limon Cafe'ye Hoş Geldiniz!",
+    drinksTitle: "🥤 İçecekler",
+    foodsTitle: "🍽️ Yiyecekler",
+    cakesTitle: "🍰 Tatlılar",
+    item0: "🌐 Dil Seçimi",
+    item1: "Limonata",
+    item2: "Portakal Suyu",
+    item3: "Vişne Suyu",
+    item4: "Köfte",
+    item5: "Döner",
+    item6: "Kebap",
+    item7: "Pilav",
+    item8: "Çorba",
+    phoneLabel: "Telefon",
+    mapLink: "Yol Tarifi",
+    addressLabel: "Adres: Araklı, Trabzon"
+  },
+  en: {
+    title: "LIMON CAFE MENU",
+    welcome: "Welcome to Limon Cafe!",
+    drinksTitle: "🥤 Beverages",
+    foodsTitle: "🍽️ Foods",
+    cakesTitle: "🍰 Cakes",
+    item0: "🌐 Language",
+    item1: "Lemonade",
+    item2: "Orange Juice",
+    item3: "Sour Cherry Juice",
+    item4: "Meatballs",
+    item5: "Doner Kebab",
+    item6: "Kebap",
+    item7: "Rice",
+    item8: "Soup",
+    phoneLabel: "Phone",
+    mapLink: "Get Directions",
+    addressLabel: "Address: Araklı, Trabzon"
+  },
+  ar: {
+    title: "ليمون كافيه",
+    welcome: "مرحبًا بكم في كافيه ليمون!",
+    drinksTitle: "🥤 المشروبات",
+    foodsTitle: "🍽️ الأطعمة",
+    cakesTitle: "🍰 كعكات",
+    item0: "🌐 اختيار اللغة",
+    item1: "ليموناضة",
+    item2: "عصير برتقال",
+    item3: "عصير الكرز",
+    item4: "كفتة",
+    item5: "شاورما",
+    item6: "كباب",
+    item7: "أرز",
+    item8: "شوربة",
+    phoneLabel: "هاتف",
+    mapLink: "الاتجاهات",
+    addressLabel: "العنوان: أراكلي، طرابزون"
+  }
+};
+
 
   function setLanguage(lang) {
     const t = translations[lang];
