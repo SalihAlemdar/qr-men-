@@ -6,6 +6,12 @@
   <title>Limon Cafe Menü</title>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: 'Segoe UI', sans-serif;
       background: #fffde7;
@@ -14,6 +20,7 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      position: relative; /* Footer için referans */
     }
 
     .welcome-message {
@@ -186,9 +193,10 @@
       padding: 10px 0;
       background-color: #fef4c5;
       width: 100%;
-      position: fixed; /* Footer'ı sabit yap */
+      position: fixed; /* Sabit pozisyon */
       bottom: 0; /* En alta sabitle */
       left: 0;
+      z-index: 1000; /* Üstte kalmasını garantile */
     }
 
     .footer a {
@@ -213,9 +221,14 @@
       .item:hover {
         transform: none;
       }
+      body {
+        padding-bottom: 60px; /* Footer yüksekliği için boşluk */
+      }
       .footer {
-        position: fixed; /* Mobilde de sabit tut */
+        position: fixed; /* Mobilde sabit tut */
         bottom: 0;
+        width: 100%;
+        padding: 10px;
       }
     }
   </style>
