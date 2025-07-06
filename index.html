@@ -189,42 +189,43 @@
     }
 
     .footer {
-      text-align: center;
-      padding: 10px 0;
-      background-color: #fef4c5;
-      width: 100%;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      z-index: 1000;
-    }
-
-    .footer span,
-    .footer a {
-      font-family: 'Segoe UI', sans-serif; /* Bir önceki font'a geri dön */
-      font-weight: bold; /* Yazıları kalın yap */
-      font-size: 16px;
-    }
-
-    .footer a {
-  margin-left: 10px;
-  color: #000000;
-  text-decoration: none;
-  padding: 4px 10px; /* ↓ BOYUTLARI KÜÇÜLTTÜK */
-  background-color: #f4d03f;
-  border: 1px solid #000000;
-  border-radius: 4px;
-  font-size: 14px; /* yazı boyutu da küçüldü */
-  display: inline-block;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   text-align: center;
-  cursor: pointer;
+  padding: 8px 10px;
+  background-color: #fef4c5;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  font-size: 14px;
 }
 
+.footer span {
+  font-weight: bold;
+  white-space: nowrap;
+}
 
-    .footer a:hover {
-      text-decoration: underline;
-      background-color: #ffe066;
-    }
+.footer a {
+  font-size: 13px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: #f4d03f;
+  color: #000;
+  text-decoration: none;
+  border: 1px solid #000;
+  white-space: nowrap;
+}
+
+.footer a:hover {
+  background-color: #ffe066;
+  text-decoration: underline;
+}
+
 
     @media (max-width: 767px) {
       .accordion-content {
