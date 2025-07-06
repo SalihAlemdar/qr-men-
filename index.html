@@ -22,9 +22,14 @@
       height: 100%;
       background-color: rgba(255, 255, 255, 0.95);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-size: 28px;
+      font-size: 24px;
+      font-family: 'Dancing Script', cursive;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
       z-index: 9999;
       animation: fadeOut 2.5s ease-in-out forwards;
     }
@@ -33,6 +38,11 @@
       0% { opacity: 1; }
       80% { opacity: 1; }
       100% { opacity: 0; visibility: hidden; }
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; visibility: visible; }
+      100% { opacity: 1; }
     }
 
     header {
@@ -57,17 +67,17 @@
     }
 
     .logo-img {
-      width: 60px;
-      height: 60px;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
-      margin-right: 10px;
       object-fit: cover;
+      margin-bottom: 10px;
     }
 
     .lang-dropdown {
       position: relative;
       display: inline-block;
-      margin-left: 20px; /* Butonun solunda boşluk */
+      margin-left: 20px;
     }
 
     .lang-btn {
@@ -131,8 +141,8 @@
     }
 
     @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(-5px);}
-      to {opacity: 1; transform: translateY(0);}
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .item {
@@ -187,7 +197,8 @@
 <body>
 
 <div class="welcome-message" id="welcome">
-  🍋 Limon Cafe'ye Hoş Geldiniz!
+  <img src="img/logo.jpg" alt="Limon Cafe Logo" class="logo-img">
+  <span id="title-text">Limon Cafe'ye Hoş Geldiniz!</span>
 </div>
 
 <header>
@@ -279,6 +290,7 @@
   const translations = {
     tr: {
       title: "LİMON CAFE MENÜ",
+      welcome: "Limon Cafe'ye Hoş Geldiniz!",
       drinksTitle: "🥤 İçecekler",
       foodsTitle: "🍽️ Yiyecekler",
       cakesTitle: "🍰 Tatlılar",
@@ -294,6 +306,7 @@
     },
     en: {
       title: "LİMON CAFE MENU",
+      welcome: "Welcome to Limon Cafe!",
       drinksTitle: "🥤 Beverages",
       foodsTitle: "🍽️ Foods",
       cakesTitle: "🍰 Cakes",
@@ -309,6 +322,7 @@
     },
     ar: {
       title: "ليمون كافيه",
+      welcome: "مرحبًا بكم في كافيه ليمون!",
       drinksTitle: "🥤 المشروبات",
       foodsTitle: "🍽️ الأطعمة",
       cakesTitle: "🍰 كعكات",
@@ -328,7 +342,14 @@
     const t = translations[lang];
     for (const key in t) {
       if (key === 'title') {
-        document.getElementById('title-text').textContent = t[key]; // Yalnızca span içindeki metni güncelle
+        document.getElementById('title-text').textContent = t[key]; // Yalnızca header içindeki metni güncelle
+      } else if (key === 'welcome') {
+        document.getElementById('welcome').style.opacity = '1'; // Hoş geldiniz ekranını göster
+        document.getElementById('welcome').style.visibility = 'visible'; // Görünürlüğü aktif et
+        document.getElementById('welcome').style.animation = 'none'; // Mevcut animasyonu sıfırla
+        void document.getElementById('welcome').offsetWidth; // Reflow tetikle
+        document.getElementById('welcome').style.animation = 'fadeOut 2.5s ease-in-out forwards'; // Yeniden animasyonu uygula
+        document.getElementById('title-text').textContent = t[key]; // Hoş geldiniz mesajını güncelle
       } else {
         document.getElementById(key).textContent = t[key];
       }
