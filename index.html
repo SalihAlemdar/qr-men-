@@ -179,6 +179,26 @@
       margin-left: auto;
     }
 
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      padding: 10px 0;
+      background-color: #fef4c5;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .footer a {
+      margin-left: 10px;
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
     @media (max-width: 767px) {
       .accordion-content {
         animation: fadeIn 0.4s ease-in-out;
@@ -190,6 +210,10 @@
       }
       .item:hover {
         transform: none;
+      }
+      .footer {
+        position: relative;
+        margin-top: 20px;
       }
     }
   </style>
@@ -286,6 +310,12 @@
   </div>
 </div>
 
+<div class="footer">
+  <span>Telefon: +90 555 123 45 67</span>
+  <span>Adres: İstanbul, Türkiye</span>
+  <a href="https://maps.app.goo.gl/KQw3n1ojKLSa2UGo7?g_st=iw" target="_blank">Yol Tarifi</a>
+</div>
+
 <script>
   const translations = {
     tr: {
@@ -294,7 +324,7 @@
       drinksTitle: "🥤 İçecekler",
       foodsTitle: "🍽️ Yiyecekler",
       cakesTitle: "🍰 Tatlılar",
-      item0: "🌐 Dil Seçimi",
+      item0: "Dil Seçimi",
       item1: "Limonata",
       item2: "Portakal Suyu",
       item3: "Vişne Suyu",
@@ -310,7 +340,7 @@
       drinksTitle: "🥤 Beverages",
       foodsTitle: "🍽️ Foods",
       cakesTitle: "🍰 Cakes",
-      item0: "🌐 Language",
+      item0: "Language",
       item1: "Lemonade",
       item2: "Orange Juice",
       item3: "Sour Cherry Juice",
@@ -326,7 +356,7 @@
       drinksTitle: "🥤 المشروبات",
       foodsTitle: "🍽️ الأطعمة",
       cakesTitle: "🍰 كعكات",
-      item0: "🌐 اختيار اللغة",
+      item0: "اختيار اللغة",
       item1: "ليموناضة",
       item2: "عصير برتقال",
       item3: "عصير الكرز",
@@ -342,20 +372,19 @@
     const t = translations[lang];
     for (const key in t) {
       if (key === 'title') {
-        document.getElementById('title-text').textContent = t[key]; // Yalnızca header içindeki metni güncelle
+        document.getElementById('title-text').textContent = t[key];
       } else if (key === 'welcome') {
-        document.getElementById('welcome').style.opacity = '1'; // Hoş geldiniz ekranını göster
-        document.getElementById('welcome').style.visibility = 'visible'; // Görünürlüğü aktif et
-        document.getElementById('welcome').style.animation = 'none'; // Mevcut animasyonu sıfırla
-        void document.getElementById('welcome').offsetWidth; // Reflow tetikle
-        document.getElementById('welcome').style.animation = 'fadeOut 2.5s ease-in-out forwards'; // Yeniden animasyonu uygula
-        document.getElementById('title-text').textContent = t[key]; // Hoş geldiniz mesajını güncelle
+        document.getElementById('welcome').style.opacity = '1';
+        document.getElementById('welcome').style.visibility = 'visible';
+        document.getElementById('welcome').style.animation = 'none';
+        void document.getElementById('welcome').offsetWidth;
+        document.getElementById('welcome').style.animation = 'fadeOut 2.5s ease-in-out forwards';
+        document.getElementById('title-text').textContent = t[key];
       } else {
         document.getElementById(key).textContent = t[key];
       }
     }
     document.documentElement.lang = lang;
-    // Dil seçimi sonrası dropdown'ı kapat
     document.querySelector('.lang-options').style.display = 'none';
   }
 
