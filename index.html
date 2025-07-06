@@ -35,7 +35,7 @@
       align-items: center;
       justify-content: center;
       font-size: 24px;
-      font-family: 'Dancing Script', cursive;
+      font-family: 'Dancing+Script', cursive;
       font-weight: 700;
       letter-spacing: 1px;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
@@ -64,7 +64,7 @@
     }
 
     h1 {
-      font-family: 'Dancing Script', cursive;
+      font-family: 'Dancing+Script', cursive;
       font-size: 24px;
       font-weight: 700;
       letter-spacing: 1px;
@@ -189,43 +189,42 @@
     }
 
     .footer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  text-align: center;
-  padding: 8px 10px;
-  background-color: #fef4c5;
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 1000;
-  font-size: 14px;
-}
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+      padding: 8px 10px;
+      background-color: #fef4c5;
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      z-index: 1000;
+      font-size: 14px;
+    }
 
-.footer span {
-  font-weight: bold;
-  white-space: nowrap;
-}
+    .footer span {
+      font-weight: bold;
+      white-space: nowrap;
+    }
 
-.footer a {
-  font-size: 13px;
-  padding: 4px 8px;
-  border-radius: 4px;
-  background-color: #f4d03f;
-  color: #000;
-  text-decoration: none;
-  border: 1px solid #000;
-  white-space: nowrap;
-}
+    .footer a {
+      font-size: 13px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      background-color: #f4d03f;
+      color: #000;
+      text-decoration: none;
+      border: 1px solid #000;
+      white-space: nowrap;
+    }
 
-.footer a:hover {
-  background-color: #ffe066;
-  text-decoration: underline;
-}
-
+    .footer a:hover {
+      background-color: #ffe066;
+      text-decoration: underline;
+    }
 
     @media (max-width: 767px) {
       .accordion-content {
@@ -247,13 +246,28 @@
         bottom: 0;
         width: 100%;
         padding: 10px;
+        flex-direction: column; /* Alt satıra geçecek şekilde düzen */
+        align-items: center;
       }
-      .footer span,
-      .footer a {
+      .footer span {
         font-size: 14px;
       }
       .footer a {
+        font-size: 14px;
         padding: 6px 12px;
+      }
+      /* Telefon bilgisi üstte, adres ve yol tarifi altta olacak */
+      .footer > :nth-child(1) { /* İlk span (Telefon) */
+        order: 1;
+        width: 100%;
+      }
+      .footer > :nth-child(2) { /* İkinci span (Adres) */
+        order: 2;
+        width: 100%;
+      }
+      .footer > :nth-child(3) { /* a (Yol Tarifi) */
+        order: 3;
+        width: auto;
       }
     }
   </style>
@@ -353,7 +367,7 @@
 <div class="footer">
   <span dir="ltr">
   <span id="phoneLabel" dir="ltr">Telefon</span>: +90 555 123 45 67
-</span>&nbsp;&nbsp;
+</span>  
   <span id="addressLabel">Adres: Araklı, Trabzon</span>
   <a id="mapLink" href="https://maps.app.goo.gl/KQw3n1ojKLSa2UGo7?g_st=iw" target="_blank">Yol Tarifi</a>
 </div>
@@ -418,7 +432,6 @@
     addressLabel: "العنوان: أراكلي، طرابزون"
   }
 };
-
 
   function setLanguage(lang) {
     const t = translations[lang];
